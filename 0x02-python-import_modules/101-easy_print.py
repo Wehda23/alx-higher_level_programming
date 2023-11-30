@@ -1,3 +1,2 @@
-#!/usr/bin/python3
-from myfunctions import easy_print
-easy_print()
+#!/bin/sh
+echo "#pythonschool"
