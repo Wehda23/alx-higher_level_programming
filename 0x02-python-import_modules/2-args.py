@@ -3,7 +3,8 @@ import sys
 if len(sys.argv) == 1:
     print("0 arguments.")
 else:
-    print("{} arguments:".format(len(sys.argv) - 1))
+    note = "argument" if len(sys.argv) == 2 else "arguments"
+    print("{} {}:".format(len(sys.argv) - 1, note))
     for number, argument in enumerate(sys.argv[1:], start = 1):
         print("{}: {}".format(number, argument))
 
