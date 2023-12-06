@@ -7,7 +7,13 @@ def roman_to_int(roman_string):
             "L": 50, "C": 100, "D": 500,
             "M": 1000,
         }
-        for roman_character in roman_string:
-            total += roman[roman_character]
+        prev_value = 0
+        for roman_character in reversed(roman_string):
+            current_value = roman[roman_character]
+            if current_value >= prev_value:
+                total += roman[roman_character]
+            else:
+                total -= current_value
 
+            prev_value = current_value
     return total
