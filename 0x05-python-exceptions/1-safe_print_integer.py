@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 def safe_print_integer(value) -> bool:
-    if isinstance(value, int):
+    try:
+        if not isinstance(value, int):
+            raise TypeError("User other type")
+
         print("{:d}".format(value))
         return True
-    return False
+    except Exception as e:
+        return False
