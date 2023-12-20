@@ -67,6 +67,7 @@ class Square:
                 for column in range(self.__position[0]):
                     print(" ", end="")
                 print("#" * self.__size)
+
     def __str__(self):
         """does nothing"""
         string: str = ""
