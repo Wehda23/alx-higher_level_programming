@@ -3,10 +3,12 @@
 implementing Nodes and linked lists singly in python
 """
 
+
 class Node:
     """
     Class that represents a node
     """
+
     def __init__(self, data, next_node=None):
         """
         initiation instance with private attribute
@@ -15,7 +17,7 @@ class Node:
         """
         if not isinstance(data, int):
             raise TypeError("data must be an integer")
-        
+
         if next_node is not None and not isinstance(next_node, Node):
             raise TypeError("next_node must be a Node object")
 
@@ -26,6 +28,7 @@ class Node:
     def data(self):
         """Property returns Data"""
         return self.__data
+
     @data.setter
     def data(self, value):
         """
@@ -45,8 +48,10 @@ class Node:
         """Setter function for next_node"""
         self.__next = value
 
+
 class SinglyLinkedList:
     """Class that representes a linked list"""
+
     def __init__(self):
         """ Initiation instance and it's attributes """
         self.__head = None
