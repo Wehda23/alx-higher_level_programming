@@ -19,7 +19,7 @@ class Node:
         if next_node is not None and not isinstance(next_node, Node):
             raise TypeError("next_node must be a Node object")
 
-        self.__next_node = next_node
+        self.__next = next_node
         self.__data = data
 
     @property
@@ -36,16 +36,14 @@ class Node:
         self.__data = value
 
     @property
-    def next_node(self):
+    def next(self):
         """Property returns next_node"""
-        return self.__next_node
+        return self.__next
 
-    @next_node.setter
-    def next_node(self, value):
+    @next.setter
+    def next(self, value):
         """Setter function for next_node"""
-        if value is not None and isinstance(value, Node):
-            raise TypeError("next_node must be a Node Object")
-        self.__next_node = value
+        self.__next = value
 
 class SinglyLinkedList:
     """Class that representes a linked list"""
@@ -63,10 +61,10 @@ class SinglyLinkedList:
             self.__head = new_node
         else:
             current = self.__head
-            while current.next_node and new_node.data > current.next_node.data:
-                current = current.next_node
-            new_node.next_node = current.next_node
-            current.next_node = new_node
+            while current.next and new_node.data > current.next.data:
+                current = current.next
+            new_node.next = current.next
+            current.next = new_node
 
     def __str__(self):
         """Prints the entire list in stdout"""
@@ -74,5 +72,5 @@ class SinglyLinkedList:
         current = self.__head
         while current:
             nodes.append(str(current.data))
-            current = current.next_node
+            current = current.next
         return "\n".join(nodes)
