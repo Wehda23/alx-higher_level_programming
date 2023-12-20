@@ -56,14 +56,16 @@ class SinglyLinkedList:
     def sorted_insert(self, value):
         """ Adds node at right position """
         new_node = Node(value)
-        if self.__head is None or self.__head.data >= value:
-            new_node.next_node = self.__head
+        if self.__head is None:
+            self.__head = new_node
+        elif self.__head.data >= new_node.data:
+            new_node.next = self.__head
             self.__head = new_node
         else:
             current = self.__head
-            while current.next_node is not None and current.next_node.data < value:
+            while current.next_node and new_node.data > current.next_node.data:
                 current = current.next_node
-            new_node = next_node = current.next_node
+            new_node.next_node = current.next_node
             current.next_node = new_node
 
     def __str__(self):
