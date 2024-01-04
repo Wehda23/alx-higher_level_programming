@@ -139,7 +139,8 @@ class Rectangle:
         Rectangle.number_of_instances -= 1
 
     @staticmethod
-    def bigger_or_equal(first: "Rectangle", second: "Rectangle") -> "Rectangle":
+    def bigger_or_equal(first: "Rectangle", second: "Rectangle")\
+            -> "Rectangle":
         """
         Method used to compare to rectangles based on Area
 
