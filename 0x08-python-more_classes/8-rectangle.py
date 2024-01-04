@@ -178,6 +178,8 @@ class Rectangle:
         Returns:
             - True incase of equal, otherwise False.
         """
+        if not isinstance(other, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
         return self.area() == other.area()
 
     def __ge__(self, other) -> bool:
@@ -191,4 +193,6 @@ class Rectangle:
         Returns:
             - True incase of greate than or equal, other wise False.
         """
+        if not isinstance(other, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
         return self.area() >= other.area()
