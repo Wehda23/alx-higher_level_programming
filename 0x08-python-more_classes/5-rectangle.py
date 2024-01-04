@@ -126,4 +126,4 @@ class Rectangle:
 
     def __del__(self) -> None:
         """Method used when an instance is being deleted RIP :D"""
-        print("Bye rectangle ...")
+        print("Bye rectangle...")
