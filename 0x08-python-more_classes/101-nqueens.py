@@ -49,7 +49,7 @@ class Queens:
         """Method acts as a helper recursive function"""
         # base case
         if col >= self.n:
-            print_solution(board, self.n)
+            self.print_solution(board)
             return
 
         for i in range(self.n):
