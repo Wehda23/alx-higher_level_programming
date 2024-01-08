@@ -1,0 +1,31 @@
+# File: text_indentation_doctest.txt
+
+Here are some examples of the text_indentation function:
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Hello. How are you today?")
+Hello.
+How are you today?
+
+>>> text_indentation("This is a test: 1... 2... 3...")
+This is a test:
+1...
+2...
+3...
+
+>>> text_indentation("Another example? Sure.")
+Another example?
+Sure.
+
+>>> text_indentation("   Leading and trailing spaces should be removed.   ")
+Leading and trailing spaces should be removed.
+
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> text_indentation(["List", "of", "words."])
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
