@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-File that contains a function called 
+File that contains a function called
 is_kind_of_class
 """
 
