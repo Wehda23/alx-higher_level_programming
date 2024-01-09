@@ -20,7 +20,7 @@ class BaseGeometry:
             - name: Should of a python <str> type
             - value: Should be of python type <int>
         """
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
         if value < 1:
             raise ValueError(f"{name} must be greater than 0")
