@@ -26,7 +26,7 @@ class Rectangle(BaseGeometry):
     Class representeds a 2D Geometry
     """
     def __init__(self, width, height):
-        
+
         # Validate width
         self.integer_validator("width", width)
         self.__width = width
