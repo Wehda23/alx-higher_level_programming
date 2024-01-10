@@ -23,7 +23,7 @@ class Student:
         """Method Retrieves Dictionary Representation"""
         data: dict = vars(self)
 
-        if attrs:
+        if attrs and isinstance(attrs, list):
             data: dict = {
                     key: value for key, value in data.items()
                     if key in attrs
