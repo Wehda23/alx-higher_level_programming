@@ -24,4 +24,6 @@ def append_after(filename="", search_string="", new_string=""):
             contents.insert(position, new_string)
 
         new_text: str = "\n".join(contents)
+        file.seek(0)
         file.write(new_text)
+        file.truncate()
