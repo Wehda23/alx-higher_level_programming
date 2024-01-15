@@ -150,13 +150,13 @@ class Base:
             if hasattr(obj, 'size'):
                 # Treat as Square
                 values: list[int] = [
-                        getattr(obj, attr) for attr in square_format
+                        str(getattr(obj, attr)) for attr in square_format
                 ]
                 text = text + ",".join(values)
             else:
                 # otherwise treat as Rectangle
                 values: list[int] = [
-                        getattr(obj, attr) for attr in rectangle_format
+                        str(getattr(obj, attr)) for attr in rectangle_format
                 ]
                 text = text + ",".join(values)
             # Add new line
@@ -201,15 +201,22 @@ class Base:
         # form the dictionary
         dictionaries: list[dict] = []
         for info in content_list:
+            # Skip empty lines
+            if not info:
+                continue
             # Split data by sep = ","
             separat: list[int] = info.split(",")
             # Check the length of array to indicate if Square or Rectangle
             if len(separat) == 4:
                 # assuming it is a square
-                obj_dict: dict[str, int] = dict(zip(square_format, separat))
+                obj_dict: dict[str, int] = dict(
+                        zip(square_format, map(int, separat))
+                )
             else:
                 # Assuming it is a rectangle
-                obj_dict: dict[str, int] = dict(zip(rectangle_format, separat))
+                obj_dict: dict[str, int] = dict(
+                        zip(rectangle_format, map(int, separat))
+                )
             dictionaries.append(obj_dict)
         # Return objects
         return [
