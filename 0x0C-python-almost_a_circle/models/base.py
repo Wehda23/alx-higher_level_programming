@@ -5,6 +5,7 @@ File that contains class called Base
 """
 
 import json
+import turtle
 
 
 class Base:
@@ -223,3 +224,59 @@ class Base:
                 cls.create(**obj)
                 for obj in dictionaries
         ]
+
+    @staticmethod
+    def draw_rectangle(turt, rect) -> None:
+        """
+        Static Method used to draw rectangle
+        """
+        turt.color("#ffffff")
+        turt.showturtle()
+        turt.up()
+        turt.goto(rect.x, rect.y)
+        turt.down()
+        for _ in range(2):
+            turt.forward(rect.width)
+            turt.left(90)
+            turt.forward(rect.height)
+            turt.left(90)
+        turt.hideturtle()
+
+    @staticmethod
+    def draw_square(turt, sq) -> None:
+        """
+        Static Method used to draw Square
+        """
+        turt.color("#b5e3d8")
+        turt.showturtle()
+        turt.up()
+        turt.goto(sq.x, sq.y)
+        turt.down()
+        for _ in range(2):
+            turt.forward(sq.width)
+            turt.left(90)
+            turt.forward(sq.height)
+            turt.left(90)
+        turt.hideturtle()
+
+    @staticmethod
+    def draw(list_rectangles, list_squares) -> None:
+        """
+        Static Method that draws turtle
+        
+        Args:
+            - list_rectangles: list of rectangle instances
+            - list_squares: list of square instances
+        """
+        turt = turtle.Turtle()
+        turt.screen.bgcolor("#b7312c")
+        turt.pensize(3)
+        turt.shape("turtle")
+
+        for rect in list_rectangles:
+            Base.draw_rectangle(turt, rect)
+
+        for sq in list_squares:
+            Base.draw_square(turt, sq)
+
+        turtle.exitonclick()
