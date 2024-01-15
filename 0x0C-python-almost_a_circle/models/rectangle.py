@@ -233,8 +233,25 @@ class Rectangle(Base):
                 setattr(self, key, value)
         else:
             # Skipping **kwargs if *args exists
-            for key, value in kwargs:
+            for key, value in kwargs.items():
                 setattr(self, key, value)
+
+    def to_dictionary(self) -> dict[str, int]:
+        """
+        Method used to return a dictionary representation of class
+        instance attributes
+
+        Returns:
+            - Dictionary that contains all class attributes
+        """
+        # Get attrs in dictionary
+        class_attrs: dict[str, int] = {
+                attr: getattr(self, attr) for attr in dir(self)
+                if not attr.startswith("_")
+                and not callable(getattr(self, attr))
+        }
+        # Return Dictionary
+        return class_attrs
 
     def __str__(self) -> str:
         """

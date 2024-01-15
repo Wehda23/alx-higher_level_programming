@@ -11,4 +11,4 @@ from models.rectangle import Rectangle
 
 test: Rectangle = Rectangle(10, 20, 15, 9)
 
-test.update()
+test.to_dictionary()
