@@ -1,263 +1,158 @@
 #!/usr/bin/python3
-
-
-"""
-File that contains class called Rectangle
-"""
-
-
-from .base import Base
+"""Defines a rectangle class."""
+from models.base import Base
 
 
 class Rectangle(Base):
-    """
-    class that represents a two dimensional Rectangle
-    """
+    """Represent a rectangle."""
+
     def __init__(self, width, height, x=0, y=0, id=None):
-        """
-        Class instance initiation attributes.
+        """Initialize a new Rectangle.
 
         Args:
-            - width: Width of the rectangle.
-            - height: Height of the rectangle.
-            - x: Postion according to the x-axis (default: 0)
-            - y: Position according to the y-axis (default: 0)
+            width (int): The width of the new Rectangle.
+            height (int): The height of the new Rectangle.
+            x (int): The x coordinate of the new Rectangle.
+            y (int): The y coordinate of the new Rectangle.
+            id (int): The identity of the new Rectangle.
+        Raises:
+            TypeError: If either of width or height is not an int.
+            ValueError: If either of width or height <= 0.
+            TypeError: If either of x or y is not an int.
+            ValueError: If either of x or y < 0.
         """
-        # Initiate Super
-        super().__init__(id)
-        self.height = height
         self.width = width
+        self.height = height
         self.x = x
         self.y = y
-
-    @staticmethod
-    def validate_positive_integer(value: int, name: str) -> None:
-        """
-        Method used to validate value as positive integer
-
-        Args:
-            - value: integer input
-            - name: variable name
-
-        Returns:
-            - Nothing, Just raises an error
-        """
-        # Validate integer type
-        if not isinstance(value, int):
-            raise TypeError(f"{name} must be an integer")
-
-        # Check value of the input
-        if value <= 0:
-            raise ValueError(f"{name} must be > 0")
-
-    @staticmethod
-    def validate_integer(value: int, name: str) -> None:
-        """
-        Method used to validate if the value is an integer
-
-        Args:
-            - value: integer input
-            - name: variable name
-
-        Returns:
-            Nothing, just Raises an Error
-        """
-        # Check type
-        if not isinstance(value, int):
-            raise TypeError(f"{name} must be an integer")
-
-    @staticmethod
-    def validate_coordinate(value: int, name: str) -> None:
-        """
-        Static Method used to validate coordinates
-
-        Args:
-            - value: Integer value input
-            - name: name of variable
-        """
-        # Check if it is equal or more than 0
-        if value < 0:
-            raise ValueError(f"{name} must be >= 0")
+        super().__init__(id)
 
     @property
-    def width(self) -> int:
-        """
-        Property method to get value to width
-
-        Returns:
-            - width of the rectangle as Python Integer Value <int>
-        """
+    def width(self):
+        """Set/get the width of the Rectangle."""
         return self.__width
 
     @width.setter
-    def width(self, value: int) -> None:
-        """
-        Property Setter method for new value for width
-
-        Args:
-            - value: New value for width of rectangle
-
-        Returns:
-            - Nothing.
-        """
-        # Initiate variable name
-        variable_name: str = "width"
-
-        # Validate parameters
-        self.validate_positive_integer(value, variable_name)
-
-        # Set new value
-        self.__width: int = value
+    def width(self, value):
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
 
     @property
-    def height(self) -> int:
-        """
-        Property method to get value of height
-
-        Returns:
-            - height of the rectangle as Python Integer value <int>
-        """
+    def height(self):
+        """Set/get the height of the Rectangle."""
         return self.__height
 
     @height.setter
-    def height(self, value) -> None:
-        """
-        Property Setter method used to set new value to height
-
-        Args:
-           - value: New value of height
-        """
-        # Initate variable name
-        variable_name: str = 'height'
-
-        # Validate value
-        self.validate_positive_integer(value, variable_name)
-
-        # Set new value to height
-        self.__height: int = value
+    def height(self, value):
+        if type(value) != int:
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
 
     @property
-    def x(self) -> int:
-        """
-        Property method used to return X coordinate of rectangle
-
-        Returns:
-            - X-Coordinate of rectangle as python integer <int>
-        """
+    def x(self):
+        """Set/get the x coordinate of the Rectangle."""
         return self.__x
 
     @x.setter
-    def x(self, value: int) -> None:
-        """
-        Property Setter method used to set new value to x-axis
-
-        Args:
-            - value: New x-coordinate for rectangle
-        """
-        # Initiate variable name
-        variable_name: str = "x"
-        # Validate value
-        self.validate_integer(value, variable_name)
-        self.validate_coordinate(value, variable_name)
-        # Set New value
-        self.__x: int = value
+    def x(self, value):
+        if type(value) != int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
 
     @property
-    def y(self) -> int:
-        """
-        Property Method used to return Y coordinate of rectangle
-
-        Returns:
-            - Y-Coordinate of rectangle as Python Integer <int>
-        """
+    def y(self):
+        """Set/get the y coordinate of the Rectangle."""
         return self.__y
 
     @y.setter
-    def y(self, value: int) -> None:
-        """
-        Property Setter method used to set new value to y-axis
-
-        Args:
-            - value: New y-coordinate for rectangle
-        """
-        # Initiate variable name
-        variable_name: str = 'y'
-        # Validate value
-        self.validate_integer(value, variable_name)
-        self.validate_coordinate(value, variable_name)
-
-        # Set New Value
+    def y(self, value):
+        if type(value) != int:
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
 
-    def area(self) -> int:
-        """
-        Method used to calculate Area of rectangle
+    def area(self):
+        """Return the area of the Rectangle."""
+        return self.width * self.height
 
-        Returns:
-            - Area of the rectangle
-        """
-        return self.height * self.width
+    def display(self):
+        """Print the Rectangle using the `#` character."""
+        if self.width == 0 or self.height == 0:
+            print("")
+            return
 
-    def display(self) -> None:
-        """
-        Represents Rectangle with Symbole
-        """
-        # Y - Axis Coordinates
-        for new_line in range(self.y):
-            print()
+        [print("") for y in range(self.y)]
+        for h in range(self.height):
+            [print(" ", end="") for x in range(self.x)]
+            [print("#", end="") for w in range(self.width)]
+            print("")
 
-        for row in range(self.height):
-            # X - Axis coordinates
-            space_x: str = " " * self.x
-            print(space_x, end="")
-            for column in range(self.width):
-                print("#", end='')
-            print()
+    def update(self, *args, **kwargs):
+        """Update the Rectangle.
 
-    def update(self, *args, **kwargs) -> None:
+        Args:
+            *args (ints): New attribute values.
+                - 1st argument represents id attribute
+                - 2nd argument represents width attribute
+                - 3rd argument represent height attribute
+                - 4th argument represents x attribute
+                - 5th argument represents y attribute
+            **kwargs (dict): New key/value pairs of attributes.
         """
-        Method used to update class Rectangle
-        """
-        # Initiate instance attributes
-        instance_attributes: list = [
-                "id", "width", "height", "x", "y"
-        ]
-        # Skip **kwargs if *args exists
-        if args:
-            for attr in range(len(args)):
-                # Instance key
-                key: str = instance_attributes[attr]
-                # Value from args
-                value = args[attr]
-                # Set the new value
-                setattr(self, key, value)
-        else:
-            # Skipping **kwargs if *args exists
-            for key, value in kwargs.items():
-                setattr(self, key, value)
+        if args and len(args) != 0:
+            a = 0
+            for arg in args:
+                if a == 0:
+                    if arg is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif a == 1:
+                    self.width = arg
+                elif a == 2:
+                    self.height = arg
+                elif a == 3:
+                    self.x = arg
+                elif a == 4:
+                    self.y = arg
+                a += 1
 
-    def to_dictionary(self) -> dict[str, int]:
-        """
-        Method used to return a dictionary representation of class
-        instance attributes
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id":
+                    if v is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == "width":
+                    self.width = v
+                elif k == "height":
+                    self.height = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
 
-        Returns:
-            - Dictionary that contains all class attributes
-        """
-        # Get attrs in dictionary
-        class_attrs: dict[str, int] = {
-                attr: getattr(self, attr) for attr in dir(self)
-                if not attr.startswith("_")
-                and not callable(getattr(self, attr))
+    def to_dictionary(self):
+        """Return the dictionary representation of a Rectangle."""
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
         }
-        # Return Dictionary
-        return class_attrs
 
-    def __str__(self) -> str:
-        """
-        Method used to return string representation
-        """
-        class_name: str = self.__class__.__name__
-        x_y: str = f"{self.x}/{self.y}"
-        width_height: str = f"{self.width}/{self.height}"
-        return f"[{class_name}] ({self.id}) {x_y} - {width_height}"
+    def __str__(self):
+        """Return the print() and str() representation of the Rectangle."""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x, self.y,
+                                                       self.width, self.height)
