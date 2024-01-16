@@ -1,13 +1,25 @@
+#!/usr/bin/python3
+"""
+Defines unittests for base.py
+"""
+
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase(unittest.TestCase):
+    """Base class used to unittest Base Class"""
+
     def setUp(self):
+        """SetuP"""
         Base._Base__nb_objects = 0  # Reset the counter for each test case
 
     def test_create_method(self):
+        """
+        Test Creating method
+        """
         # Test create method for Rectangle
         rect_dict = {"id": 1, "width": 4, "height": 5, "x": 1, "y": 2}
         rect_instance = Rectangle.create(**rect_dict)
@@ -20,6 +32,6 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(square_instance, Square)
         self.assertEqual(str(square_instance), "[Square] (2) 0/0 - 3")
 
+
 if __name__ == '__main__':
     unittest.main()
-
