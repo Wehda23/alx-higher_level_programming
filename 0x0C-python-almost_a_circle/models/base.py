@@ -165,6 +165,8 @@ class Base:
         # File name
         file_name: str = cls.__name__ + ".csv"
         with open(file_name, mode="w", encoding="utf-8") as file:
+            if text == "":
+                text = "[]"
             # write to file
             file.write(text)
 
