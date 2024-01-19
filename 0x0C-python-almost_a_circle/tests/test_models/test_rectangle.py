@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # test_rectangle.py
-# Brennan D Baraban <375@holbertonschool.com>
 """Defines unittests for models/rectangle.py.
 
 Unittest classes:
@@ -8,6 +7,7 @@ Unittest classes:
     TestRectangle_width - line 114
     TestRectangle_height - line 190
     TestRectangle_x - line 262
+    d
     TestRectangle_y - line 334
     TestRectangle_order_of_initialization - line 402
     TestRectangle_area - line 430
