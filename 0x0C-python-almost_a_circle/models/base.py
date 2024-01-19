@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-""" File that contains class Base """
+""" 
+File that contains class Base 
+"""
 
 class Base:
     """
@@ -20,7 +22,7 @@ class Base:
         Initiating class instance
 
         Args:
-            - id: Id of the instance
+            - id (int): Id of the instance
         """
 
         if id is not None:
