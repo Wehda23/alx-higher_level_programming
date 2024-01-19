@@ -64,7 +64,7 @@ class Rectangle(Base):
             Nothing, just Raises an Error
         """
         # Check type
-        if not isinstance(value, int):
+        if type(value) != int:
             raise TypeError(f"{name} must be an integer")
 
     @staticmethod
