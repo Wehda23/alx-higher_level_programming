@@ -182,3 +182,28 @@ class Rectangle(Base):
 
         # Set New Value
         self.__y = value
+    
+    def area(self) -> int:
+        """
+        Method used to calculate Area of rectangle
+
+        Returns:
+            - Area of the rectangle
+        """
+        return self.height * self.width
+
+    def display(self) -> None:
+        """
+        Represents Rectangle with Symbole
+        """
+        # Y - Axis Coordinates
+        for new_line in range(self.y):
+            print()
+
+        for row in range(self.height):
+            # X - Axis coordinates
+            space_x: str = " " * self.x
+            print(space_x, end="")
+            for column in range(self.width):
+                print("#", end='')
+            print()
