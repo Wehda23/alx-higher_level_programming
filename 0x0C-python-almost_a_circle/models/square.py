@@ -1,7 +1,10 @@
 #!/usr/bin/python3
+
+
 """
 File that contains class called Square
 """
+
 
 from models.rectangle import Rectangle
 
@@ -30,7 +33,7 @@ class Square(Rectangle):
         class_name: str = self.__class__.__name__
         x_y: str = f"{self.x}/{self.y}"
         return f"[{class_name}] ({self.id}) {x_y} - {self.width}"
-    
+
     @property
     def size(self) -> int:
         """
@@ -51,8 +54,23 @@ class Square(Rectangle):
             - value: Is the new size value
         """
         # First do it with width then height
-        self.width = value
         self.height = value
+        self.width = value
+
+    def to_dictionary(self) -> dict[str, int]:
+        """
+        Method that returns a dictionary representation of class
+
+        Returns:
+            - Python Dictionary representation of class
+        """
+        # Get representation using super class
+        dictionary = super().to_dictionary()
+        # Pop width and height
+        dictionary.pop("width")
+        dictionary.pop("height")
+        # Return dict
+        return dictionary
 
     def update(self, *args, **kwargs) -> None:
         """

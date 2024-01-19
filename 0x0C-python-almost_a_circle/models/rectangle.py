@@ -1,12 +1,19 @@
 #!/usr/bin/python3
-""" File that contains class Rectangle """
+
+
+"""
+File that contains class called Rectangle
+"""
+
 
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Class that represents a two dimensional Rectangle"""
-
+    """
+    class that represents a two dimensional Rectangle
+    """
+    
     def __init__(self, width, height, x=0, y=0, id=None):
         """
         Class instance initiation attributes.
@@ -23,7 +30,7 @@ class Rectangle(Base):
         self.width = width
         self.x = x
         self.y = y
-    
+
     @staticmethod
     def validate_positive_integer(value: int, name: str) -> None:
         """
@@ -182,7 +189,7 @@ class Rectangle(Base):
 
         # Set New Value
         self.__y = value
-    
+
     def area(self) -> int:
         """
         Method used to calculate Area of rectangle
@@ -207,16 +214,7 @@ class Rectangle(Base):
             for column in range(self.width):
                 print("#", end='')
             print()
-    
-    def __str__(self) -> str:
-        """
-        Method used to return string representation
-        """
-        class_name: str = self.__class__.__name__
-        x_y: str = f"{self.x}/{self.y}"
-        width_height: str = f"{self.width}/{self.height}"
-        return f"[{class_name}] ({self.id}) {x_y} - {width_height}"
-    
+
     def update(self, *args, **kwargs) -> None:
         """
         Method used to update class Rectangle
@@ -248,10 +246,19 @@ class Rectangle(Base):
             - Dictionary that contains all class attributes
         """
         # Get attrs in dictionary
-        class_attrs: dict[str, int] = {
+        class_attrs = {
                 attr: getattr(self, attr) for attr in dir(self)
                 if not attr.startswith("_")
                 and not callable(getattr(self, attr))
         }
         # Return Dictionary
         return class_attrs
+
+    def __str__(self) -> str:
+        """
+        Method used to return string representation
+        """
+        class_name: str = self.__class__.__name__
+        x_y: str = f"{self.x}/{self.y}"
+        width_height: str = f"{self.width}/{self.height}"
+        return f"[{class_name}] ({self.id}) {x_y} - {width_height}"
