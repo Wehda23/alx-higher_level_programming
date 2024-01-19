@@ -34,7 +34,7 @@ class Base:
             self.id = id
 
     @staticmethod
-    def to_json_string(list_dictionaries: list[dict]) -> str:
+    def to_json_string(list_dictionaries: list) -> str:
         """
         Static Method used to return json
 
@@ -199,7 +199,7 @@ class Base:
         content_list: list[str] = content.split("\n")
 
         # form the dictionary
-        dictionaries: list[dict] = []
+        dictionaries: list = []
         for info in content_list:
             # Skip empty lines
             if not info:
