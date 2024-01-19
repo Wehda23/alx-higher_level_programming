@@ -5,21 +5,22 @@ import json
 
 
 class Base:
-    """
-    The goal of it is to manage id attribute in all my
-    future classes and to avoid duplicating the same code
-    by (extrension, same bugs)
-    """
-    __nb_objects: int = 0
+    """Base model.
 
-    def __init__(self, id= None):
-        """
-        Initiating class instance
+    This Represents the "base" for all other classes in project 0x0C*.
+
+    Private Class Attributes:
+        __nb_object (int): Number of instantiated Bases.
+    """
+
+    __nb_objects = 0
+
+    def __init__(self, id=None):
+        """Initialize a new Base.
 
         Args:
-            - id: Id of the instance
+            id (int): The identity of the new Base.
         """
-
         if id is not None:
             self.id = id
         else:
