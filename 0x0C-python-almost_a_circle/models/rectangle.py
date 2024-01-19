@@ -207,3 +207,12 @@ class Rectangle(Base):
             for column in range(self.width):
                 print("#", end='')
             print()
+    
+    def __str__(self) -> str:
+        """
+        Method used to return string representation
+        """
+        class_name: str = self.__class__.__name__
+        x_y: str = f"{self.x}/{self.y}"
+        width_height: str = f"{self.width}/{self.height}"
+        return f"[{class_name}] ({self.id}) {x_y} - {width_height}"
