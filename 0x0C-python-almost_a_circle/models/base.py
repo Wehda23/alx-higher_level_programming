@@ -145,6 +145,10 @@ class Base:
         rectangle_format: list[str] = [
                 'id', 'width', 'height', 'x', 'y'
         ]
+
+        if not list_objs:
+            return
+        
         text: str = ""
         for obj in list_objs:
             if hasattr(obj, 'size'):
