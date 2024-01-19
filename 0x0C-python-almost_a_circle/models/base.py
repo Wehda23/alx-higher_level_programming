@@ -262,7 +262,7 @@ class Base:
     def draw(list_rectangles, list_squares) -> None:
         """
         Static Method that draws turtle
-        
+
         Args:
             - list_rectangles: list of rectangle instances
             - list_squares: list of square instances
