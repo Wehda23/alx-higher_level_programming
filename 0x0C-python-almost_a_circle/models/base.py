@@ -144,8 +144,7 @@ class Base:
         square_format: list[str] = ['id', 'size', 'x', 'y']
         rectangle_format: list[str] = [
                 'id', 'width', 'height', 'x', 'y'
-        ]
-
+        ] 
         text: str = ""
         if not list_objs:
             for obj in list_objs:
