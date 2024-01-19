@@ -19,7 +19,7 @@ class Base:
         Args:
             - id: Id of the instance
         """
-
+        # YOYOYO
         if id:
             self.id = id
         else:
