@@ -51,8 +51,8 @@ class Square(Rectangle):
             - value: Is the new size value
         """
         # First do it with width then height
-        self.height = value
         self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs) -> None:
         """
