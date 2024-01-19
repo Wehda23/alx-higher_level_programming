@@ -1,26 +1,28 @@
 #!/usr/bin/python3
+
 """ File that contains class Base """
 
-import json
-
-
 class Base:
-    """Base model.
-
-    This Represents the "base" for all other classes in project 0x0C*.
-
-    Private Class Attributes:
-        __nb_object (int): Number of instantiated Bases.
+    """
+    The goal of it is to manage id attribute in all my
+    future classes and to avoid duplicating the same code
+    by (extrension, same bugs)
+    
+    Private class Attributes:
+        - __nb_objects: is a private class attribute represents\
+                number of objects created from this class
     """
 
-    __nb_objects = 0
+    __nb_objects: int = 0
 
-    def __init__(self, id=None):
-        """Initialize a new Base.
+    def __init__(self, id= None):
+        """
+        Initiating class instance
 
         Args:
-            id (int): The identity of the new Base.
+            - id: Id of the instance
         """
+
         if id is not None:
             self.id = id
         else:
