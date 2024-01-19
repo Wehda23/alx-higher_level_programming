@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ File that contains class Base """
 
+import json
+
 
 class Base:
     """
