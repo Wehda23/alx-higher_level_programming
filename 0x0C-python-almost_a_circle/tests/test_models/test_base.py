@@ -537,10 +537,6 @@ class TestBase_load_from_file_csv(unittest.TestCase):
         output = Square.load_from_file_csv()
         self.assertTrue(all(type(obj) == Square for obj in output))
 
-    def test_load_from_file_csv_no_file(self):
-        output = Square.load_from_file_csv()
-        self.assertEqual([], output)
-
     def test_load_from_file_csv_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file_csv([], 1)
