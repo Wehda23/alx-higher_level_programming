@@ -26,8 +26,8 @@ class Rectangle(Base):
         """
         # Initiate Super
         super().__init__(id)
-        self.height = height
         self.width = width
+        self.height = height
         self.x = x
         self.y = y
 
