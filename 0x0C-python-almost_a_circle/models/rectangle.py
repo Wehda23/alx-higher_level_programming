@@ -216,3 +216,25 @@ class Rectangle(Base):
         x_y: str = f"{self.x}/{self.y}"
         width_height: str = f"{self.width}/{self.height}"
         return f"[{class_name}] ({self.id}) {x_y} - {width_height}"
+    
+    def update(self, *args, **kwargs) -> None:
+        """
+        Method used to update class Rectangle
+        """
+        # Initiate instance attributes
+        instance_attributes: list = [
+                "id", "width", "height", "x", "y"
+        ]
+        # Skip **kwargs if *args exists
+        if args:
+            for attr in range(len(args)):
+                # Instance key
+                key: str = instance_attributes[attr]
+                # Value from args
+                value = args[attr]
+                # Set the new value
+                setattr(self, key, value)
+        else:
+            # Skipping **kwargs if *args exists
+            for key, value in kwargs.items():
+                setattr(self, key, value)
