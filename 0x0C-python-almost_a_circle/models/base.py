@@ -17,10 +17,7 @@ class Base:
 
     def __init__(self, id=None):
         """
-        Class initiation of public instances
-
-        Args:
-            id: Public class instance attribute
+        Class initiation of public instance
         """
         if not id:
             # Increment instance number of objects.
