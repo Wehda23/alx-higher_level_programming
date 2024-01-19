@@ -57,7 +57,7 @@ class Square(Rectangle):
         self.height = value
         self.width = value
 
-    def to_dictionary(self) -> dict[str, int]:
+    def to_dictionary(self):
         """
         Method that returns a dictionary representation of class
 
