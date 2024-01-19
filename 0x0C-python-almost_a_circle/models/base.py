@@ -146,25 +146,23 @@ class Base:
                 'id', 'width', 'height', 'x', 'y'
         ]
 
-        if not list_objs:
-            return
-        
         text: str = ""
-        for obj in list_objs:
-            if hasattr(obj, 'size'):
-                # Treat as Square
-                values: list[int] = [
-                        str(getattr(obj, attr)) for attr in square_format
-                ]
-                text = text + ",".join(values)
-            else:
-                # otherwise treat as Rectangle
-                values: list[int] = [
-                        str(getattr(obj, attr)) for attr in rectangle_format
-                ]
-                text = text + ",".join(values)
-            # Add new line
-            text += "\n"
+        if not list_objs:
+            for obj in list_objs:
+                if hasattr(obj, 'size'):
+                    # Treat as Square
+                    values: list[int] = [
+                            str(getattr(obj, attr)) for attr in square_format
+                    ]
+                    text = text + ",".join(values)
+                else:
+                    # otherwise treat as Rectangle
+                    values: list[int] = [
+                            str(getattr(obj, attr)) for attr in rectangle_format
+                    ]
+                    text = text + ",".join(values)
+                # Add new line
+                text += "\n"
         # Save to file
         # File name
         file_name: str = cls.__name__ + ".csv"
