@@ -12,10 +12,6 @@ class Base:
     The goal of class base is to manage
     id attribute in all the future classes to avoid
     duplicating the same code (by extension, same bugs).
-
-    Attributes:
-        - __nb_objects: is a private class attribute represents\
-                number of objects created from this class
     """
     __nb_objects = 0
 
