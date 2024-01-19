@@ -17,7 +17,7 @@ class Base:
         - __nb_objects: is a private class attribute represents\
                 number of objects created from this class
     """
-    __nb_objects: int = 0
+    __nb_objects = 0
 
     def __init__(self, id=None):
         """
@@ -29,7 +29,7 @@ class Base:
         if not id:
             # Increment instance number of objects.
             Base.__nb_objects += 1
-            self.id: int = self.__nb_objects
+            self.id = self.__nb_objects
         else:
             self.id = id
 
@@ -47,7 +47,7 @@ class Base:
         return json.dumps("[]")
 
     @classmethod
-    def save_to_file(cls, list_objs: list) -> None:
+    def save_to_file(cls, list_objs):
         """
         Class Method used to write JSON string to a file
 
@@ -56,10 +56,10 @@ class Base:
         """
         # Check if not none
         if list_objs is None:
-            list_objs: list = []
+            list_objs = []
 
-        file_name: str = f"{cls.__name__}" + ".json"
-        json_string: str = cls.to_json_string(
+        file_name = f"{cls.__name__}" + ".json"
+        json_string = cls.to_json_string(
                 [obj.to_dictionary() for obj in list_objs]
         )
 
@@ -67,7 +67,7 @@ class Base:
             file.write(json_string)
 
     @staticmethod
-    def from_json_string(json_string: str) -> list:
+    def from_json_string(json_string):
         """
         Static method used to convert json to Python objects
 
@@ -104,7 +104,7 @@ class Base:
             return new_instance
 
     @classmethod
-    def load_from_file(cls) -> list:
+    def load_from_file(cls):
         """
         Reads .json file data and return as python list
 
@@ -112,16 +112,16 @@ class Base:
             - Python list that contains data
         """
         # Read the data
-        file_name: str = cls.__name__ + ".json"
+        file_name= cls.__name__ + ".json"
         # Check if file exists or not.
         try:
             with open(file_name, mode='r', encoding='utf-8') as file:
                 # Read the file
-                data: str = file.read()
+                data= file.read()
                 # Convert back to python dictionaries
-                json_string: list = cls.from_json_string(data)
+                json_string= cls.from_json_string(data)
                 # Create instances and store in a list
-                instances: list = [cls.create(**obj) for obj in json_string]
+                instances= [cls.create(**obj) for obj in json_string]
                 # Return the list
                 return instances
             # File does not exist just return an empty list
@@ -141,21 +141,21 @@ class Base:
         # Format for Rectange <id>,<width>,<height>,<x>,<y>
         # format for Square <id>,<size>,<x>,<y>
         # Each instance will be saved on a new line
-        square_format: list[str] = ['id', 'size', 'x', 'y']
-        rectangle_format: list[str] = [
+        square_format= ['id', 'size', 'x', 'y']
+        rectangle_format= [
                 'id', 'width', 'height', 'x', 'y'
         ]
-        text: str = ""
+        text= ""
         for obj in list_objs:
             if hasattr(obj, 'size'):
                 # Treat as Square
-                values: list[int] = [
+                values= [
                         str(getattr(obj, attr)) for attr in square_format
                 ]
                 text = text + ",".join(values)
             else:
                 # otherwise treat as Rectangle
-                values: list[int] = [
+                values= [
                         str(getattr(obj, attr)) for attr in rectangle_format
                 ]
                 text = text + ",".join(values)
@@ -163,13 +163,13 @@ class Base:
             text += "\n"
         # Save to file
         # File name
-        file_name: str = cls.__name__ + ".csv"
+        file_name= cls.__name__ + ".csv"
         with open(file_name, mode="w", encoding="utf-8") as file:
             # write to file
             file.write(text)
 
     @classmethod
-    def load_from_file_csv(cls) -> list:
+    def load_from_file_csv(cls):
         """
         Class Method used to deserialize CSV
 
@@ -177,44 +177,44 @@ class Base:
             - Python List Data Type <list>
         """
         # Formates
-        square_format: list[str] = [
+        square_format= [
                 "id", "size", "x", "y"
         ]
-        rectangle_format: list[str] = [
+        rectangle_format = [
                 "id", "width", "height", "x", "y"
         ]
 
         # File name
-        file_name: str = cls.__name__ + ".csv"
+        file_name = cls.__name__ + ".csv"
         # Read file
-        content: str = ""
+        content = ""
         with open(file_name, mode="r", encoding="utf-8") as file:
             # Read content
-            content: str = file.read()
+            content = file.read()
         # Check if content is empty or None
         if not content or content == "":
             return []
 
         # Deserialize
-        content_list: list[str] = content.split("\n")
+        content_list = content.split("\n")
 
         # form the dictionary
-        dictionaries: list[dict] = []
+        dictionaries = []
         for info in content_list:
             # Skip empty lines
             if not info:
                 continue
             # Split data by sep = ","
-            separat: list[int] = info.split(",")
+            separat = info.split(",")
             # Check the length of array to indicate if Square or Rectangle
             if len(separat) == 4:
                 # assuming it is a square
-                obj_dict: dict[str, int] = dict(
+                obj_dict = dict(
                         zip(square_format, map(int, separat))
                 )
             else:
                 # Assuming it is a rectangle
-                obj_dict: dict[str, int] = dict(
+                obj_dict = dict(
                         zip(rectangle_format, map(int, separat))
                 )
             dictionaries.append(obj_dict)
@@ -225,7 +225,7 @@ class Base:
         ]
 
     @staticmethod
-    def draw_rectangle(turt, rect) -> None:
+    def draw_rectangle(turt, rect):
         """
         Static Method used to draw rectangle
         """
