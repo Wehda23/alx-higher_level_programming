@@ -239,7 +239,7 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
-    def to_dictionary(self) -> dict[str, int]:
+    def to_dictionary(self):
         """
         Method used to return a dictionary representation of class
         instance attributes
