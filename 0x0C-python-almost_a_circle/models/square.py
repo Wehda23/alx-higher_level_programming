@@ -30,3 +30,26 @@ class Square(Rectangle):
         class_name: str = self.__class__.__name__
         x_y: str = f"{self.x}/{self.y}"
         return f"[{class_name}] ({self.id}) {x_y} - {self.width}"
+    
+    @property
+    def size(self) -> int:
+        """
+        Property method used to retrieve the size
+        of the Square
+
+        Returns:
+            - Size of the Square
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value) -> None:
+        """
+        Property Setter method used to renew value of size
+
+        Args:
+            - value: Is the new size value
+        """
+        # First do it with width then height
+        self.height = value
+        self.width = value
