@@ -1,6 +1,6 @@
 #!/usr/bin/node
-const argv = process.argv;
+const words = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
 
-for (let i = 0; i < argv.length; i++) {
-  console.log(argv[i]);
+for (let i = 0; i < words.length; i++) {
+  console.log(words[i]);
 }
