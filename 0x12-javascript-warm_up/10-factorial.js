@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-function factorial(number) {
+function factorial (number) {
   if (number === 1) {
     return 1;
   }
@@ -9,4 +9,4 @@ function factorial(number) {
 
 const input = parseInt(process.argv[2]);
 
-console.log(factorial(input ? input : 1));
+console.log(factorial(input || 1));
