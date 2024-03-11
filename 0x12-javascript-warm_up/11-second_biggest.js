@@ -26,8 +26,8 @@ if (argv.length < 2) {
   console.log(stack[0]);
 }
 
-function swap(stack) {
-  let temp = stack[0];
+function swap (stack) {
+  const temp = stack[0];
   stack[0] = stack[1];
   stack[1] = temp;
 }
