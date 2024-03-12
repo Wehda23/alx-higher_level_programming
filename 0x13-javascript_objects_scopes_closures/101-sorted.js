@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const { dict } = require('./101-data');
+const { dict } = require("./101-data");
 const userIds = [];
 
 Object.values(dict).forEach((user) => {
@@ -20,5 +20,4 @@ const people = userIds.reduce((acc, userId) => {
   return acc;
 }, {});
 
-console.log(dict);
 console.log(people);
