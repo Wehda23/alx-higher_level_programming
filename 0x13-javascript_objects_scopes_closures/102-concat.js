@@ -26,7 +26,7 @@ fs.readFile(file1, "utf8", (err, data1) => {
     }
 
     // Concatenate contents of file1 and file2
-    const concatenatedContent = `${data1}\n${data2}`;
+    const concatenatedContent = `${data1}\n${data2}\n`;
 
     // Write concatenated content to destination file
     fs.writeFile(destination, concatenatedContent, (err) => {
