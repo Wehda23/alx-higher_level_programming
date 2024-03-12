@@ -2,8 +2,8 @@
 
 class Rectangle {
   constructor (w, h) {
-    this.setWidth(w && h ? w : undefined);
-    this.setHeight(h && w ? h : undefined);
+    this.setWidth(w > 0 && h > 0 ? w : undefined);
+    this.setHeight(h > 0 && w > 0 ? h : undefined);
   }
 
   setWidth (width) {
