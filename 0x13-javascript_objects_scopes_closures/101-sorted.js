@@ -3,7 +3,6 @@ const { dict } = require("./101-data");
 const userIds = [];
 
 Object.values(dict).forEach((user) => {
-  console.log(user);
   if (!userIds.includes(user)) {
     userIds.push(user);
   }
