@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """List of cities and states"""
+
 import MySQLdb
 from sys import argv
 
@@ -16,13 +17,15 @@ def main() -> None:
     )
     cur = conn.cursor()
     cur.execute(
-        "SELECT cities.id, cities.name, states.name FROM cities "
-        "JOIN states ON cities.state_id = states.id "
-        "ORDER BY cities.id ASC"
+        """
+        SELECT cities.name FROM cities
+        JOIN states ON cities.state_id = states.id
+        WHERE states.name = %s
+        ORDER BY cities.id ASC
+        """,
+        (argv[4],),
     )
-    query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
+    print(", ".join(map(lambda x: x[0], cur.fetchall())))
     cur.close()
     conn.close()
 
