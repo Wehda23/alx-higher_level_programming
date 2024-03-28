@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Program that finds a peak 
+# Program that finds a peak
 
 
 def find_peak(list_of_integers) -> int:
@@ -15,7 +15,7 @@ def find_peak(list_of_integers) -> int:
     # Check situations
     if not list_of_integers:
         return None
-    
+
     if len(list_of_integers) == 1:
         return list_of_integers[0]
 
