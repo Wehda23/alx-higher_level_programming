@@ -3,7 +3,7 @@
 File python script that fetchs response from\
 https://alx-intranet.hbtn.io/status
 """
-import urllib
+import urllib.request
 
 
 with urllib.request.urlopen("https://alx-intranet.hbtn.io/status") as response:
