@@ -8,28 +8,34 @@ request(url, function (error, response, body) {
     console.log(error);
   } else {
     const data = JSON.parse(body).characters;
-    const ordered = {}
+    const ordered = {};
+    const promises = [];
+
     for (let i = 0; i < data.length; i++) {
       const character = data[i];
       const characterId = character.split("/")[5];
-      request(character, function (error, response, body) {
-        if (error) {
-          console.log(error);
-        } else {
-          const name = JSON.parse(body).name;
-          if (!ordered[characterId])
-          {
-            ordered[characterId] = name;
+      const promise = new Promise((resolve, reject) => {
+        request(character, function (error, response, body) {
+          if (error) {
+            reject(error);
+          } else {
+            const name = JSON.parse(body).name;
+            resolve({ characterId, name });
           }
-        }
-      }
-      );
+        });
+      });
+      promises.push(promise);
     }
 
-    for (let j = 0; j < data.length; j++)
-    {
-        const characterId = data[j].split("/")[5];
-        console.log(ordered[characterId]);
-    }
+    Promise.all(promises)
+      .then(results => {
+        results.forEach(result => {
+          ordered[result.characterId] = result.name;
+        });
+        console.log(ordered);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 });
