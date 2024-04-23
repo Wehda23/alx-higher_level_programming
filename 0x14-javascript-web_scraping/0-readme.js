@@ -1,3 +1,5 @@
+#!/usr/bin/node
+// This Script reads contents of file and prints it in console.
 // Dependencies
 const fs = require('fs');
 
