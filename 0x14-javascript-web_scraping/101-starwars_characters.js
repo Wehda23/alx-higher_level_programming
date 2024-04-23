@@ -37,5 +37,11 @@ request(url, function (error, response, body) {
       .catch(error => {
         console.log(error);
       });
+
+    for (let j = 0; j < data.length ; j++)
+    {
+        const userId = data[j].split("/")[5];
+        console.log(ordered[userId]);
+    }
   }
 });
