@@ -13,7 +13,7 @@ request(url, function (error, response, body) {
 
     for (let i = 0; i < data.length; i++) {
       const character = data[i];
-      const characterId = character.split("/")[5];
+      const characterId = character.split('/')[5];
       const promise = new Promise((resolve, reject) => {
         request(character, function (error, response, body) {
           if (error) {
@@ -32,10 +32,9 @@ request(url, function (error, response, body) {
         results.forEach(result => {
           ordered[result.characterId] = result.name;
         });
-        for (let j = 0; j < data.length ; j++)
-        {
-            const userId = data[j].split("/")[5];
-            console.log(ordered[userId]);
+        for (let j = 0; j < data.length; j++) {
+          const userId = data[j].split('/')[5];
+          console.log(ordered[userId]);
         }
       })
       .catch(error => {
