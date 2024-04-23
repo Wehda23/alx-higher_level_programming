@@ -9,7 +9,6 @@ request(url, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    const movies = JSON.parse(body);
-    fs.writeFileSync(path, movies, 'utf-8');
-    }
+    fs.writeFileSync(path, body, 'utf-8');
+  }
 });
