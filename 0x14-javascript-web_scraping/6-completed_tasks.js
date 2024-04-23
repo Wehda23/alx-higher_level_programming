@@ -3,7 +3,6 @@
 const request = require('request');
 const url = process.argv[2];
 
-
 request(url, function (error, response, body) {
   if (error) {
     console.log(error);
@@ -11,20 +10,17 @@ request(url, function (error, response, body) {
     const data = JSON.parse(body);
     const completedUser = {};
 
-    for (let i = 0; i < data.length; i++)
-    {
-    const userId = body[i].userId;
-    const completed = body[i].completed;
+    for (let i = 0; i < data.length; i++) {
+      const userId = data[i].userId;
+      const completed = data[i].completed;
 
-    if (completed && !completedUser[userId])
-    {
-    completedUser[userId] = 0;
-    }
+      if (completed && !completedUser[userId]) {
+        completedUser[userId] = 0;
+      }
 
-    if (completed)
-    {
-    completedUser[userId]++;
-    }
+      if (completed) {
+        completedUser[userId]++;
+      }
     }
     console.log(completedUser);
   }
