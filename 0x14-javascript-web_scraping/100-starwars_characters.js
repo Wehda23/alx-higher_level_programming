@@ -1,7 +1,7 @@
 #!/usr/bin/node
 // Script that display the status code of a GET request
 const request = require('request');
-const url = `https://swapi-api.alx-tools.com/api/film/${process.argv[2]}`;
+const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`;
 
 
 request(url, function (error, response, body) {
@@ -11,7 +11,7 @@ request(url, function (error, response, body) {
     const data = JSON.parse(body).characters;
     for (let i = 0; i < data.length; i++)
     {
-    const character = data[1];
+    const character = data[i];
     request(character, function (error, response, body) {
     if (error) {
     console.log(error);
