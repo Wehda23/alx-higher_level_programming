@@ -32,16 +32,14 @@ request(url, function (error, response, body) {
         results.forEach(result => {
           ordered[result.characterId] = result.name;
         });
-        console.log(ordered);
+        for (let j = 0; j < data.length ; j++)
+        {
+            const userId = data[j].split("/")[5];
+            console.log(ordered[userId]);
+        }
       })
       .catch(error => {
         console.log(error);
       });
-
-    for (let j = 0; j < data.length ; j++)
-    {
-        const userId = data[j].split("/")[5];
-        console.log(ordered[userId]);
-    }
   }
 });
